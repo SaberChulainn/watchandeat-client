@@ -8,9 +8,7 @@ export default class signUp extends Component {
       username: "",
       email: "",
       password: "",
-      password_confirmation: "",
       error: false,
-
     };
   }
 
@@ -36,15 +34,18 @@ export default class signUp extends Component {
             }),
           }).then(resp => resp.json())
           .then((data) => {
-            console.log(data)
             if(data.error){
-              this.setState({error: true})
-            } else {
-              this.setState({error: false})
-              this.props.setUser(data.user)
-              localStorage.setItem("token", data.jwt)
-            }
-          }).then(() => this.props.history.push("/randomized"))
+                this.setState({error: true})
+              } else {
+                this.setState({error: false})
+                this.props.setUser(data.user)
+                localStorage.setItem("token", data.jwt)
+              }
+        }).then(() => { 
+            if(!this.state.error){
+            this.props.history.push("/randomized");
+            window.location.reload();
+        }})
           }
 
     render() {
