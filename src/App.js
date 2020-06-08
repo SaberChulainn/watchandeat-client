@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavbarPage from './component/navbar.js'
+import Signup from './component/signup.js'
+import { BrowserRouter, Route } from "react-router-dom";
+import Randomize from './component/randomizer/randomgenerator.js'
+import Login from './component/login.js'
+import Results from './component/results.js'
 
-function App() {
+
+export default class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
+  setUser = (user) => {
+    this.setState({user: user})
+  }
+
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <BrowserRouter>
+        <NavbarPage/>
+        <Route path="/signup" render={(props) => <Signup {...props} setUser={this.setUser}/>}/>
+        <Route path="/login" render={(props) => <Login {...props} setUser={this.setUser}/>}/>
+        <Route path="/randomized" component={Randomize}/>
+        <Route path="/results" component={Results}/>
+        <Route path="/"/>
+        </BrowserRouter>
 
-export default App;
+    );
+  }
+}
