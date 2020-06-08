@@ -1,29 +1,48 @@
 import React, { Component }  from 'react';
 
 export default class Login extends React.Component{
+    constructor(props){
+        super();
+        this.state = {
+            username: "",
+            password: "",
+            error: false,
+        }
+    }
+    handleChangeText = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
 
-    login = () => {
-    URL = "http://localhost:3001/api/v1/";
+    handleSubmit = (e) => {
+    e.preventDefault()
+    URL = "http://localhost:3001/api/v1/login";
       fetch(URL, {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          shelter: {
-            email: this.state.email,
-            password: this.state.password,
+          user: {
+            username: this.state.username,
+            password_digest: this.state.password,
           },
         }),
       })
-        .then((resp) => {
-          return resp.json();
-        })
+        .then((resp) => resp.json())
         .then((data) => {
-            this.props.setUser(data.user)
-            localStorage.setItem("token", data.jwt)
-        });
+            if(data.error){
+                this.setState({error: true})
+              } else {
+                this.setState({error: false})
+                this.props.setUser(data.user)
+                localStorage.setItem("token", data.jwt)
+              }
+        }).then(() => { 
+            if(!this.state.error){
+            this.props.history.push("/randomized");
+            window.location.reload();
+        }})
+
     }
 
     render(){
@@ -51,7 +70,7 @@ export default class Login extends React.Component{
                   value={this.state.password}
                   onChange={this.handleChangeText}
                 />
-                <input type="submit" className="signup-btn" value="Sign up" />
+                <input type="submit" className="signup-btn" value="Login" />
               </div>
             </form>
           </div>

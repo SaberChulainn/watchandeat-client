@@ -21,6 +21,13 @@ export default class NavbarPage extends Component {
       </>
     );
   };
+  handleLogOut = () => {
+    localStorage.removeItem("token");
+    this.setState({
+      User: {},
+    });
+    window.location.reload();
+  };
 
     render() {
       let isLoggedin = localStorage.getItem("token")
@@ -40,7 +47,7 @@ export default class NavbarPage extends Component {
               {isLoggedin ? (
               <>
                 {this.props.username}
-                <Link to="/logout" className="nav-link" onClick={this.logout}>
+                <Link to="/logout" className="nav-link" onClick={this.handleLogOut}>
                   Logout
                 </Link>
               </>
