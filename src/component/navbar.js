@@ -34,7 +34,7 @@ export default class NavbarPage extends Component {
         return (
           <Navbar bg="dark" expand="lg">
             <Link to="/" className="navbar-brand">
-              Watch And Eat
+              MovieNight
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

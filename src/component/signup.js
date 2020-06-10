@@ -19,7 +19,7 @@ export default class signUp extends Component {
     
       handleSubmit = (e) => {
         e.preventDefault()
-          URL = "http://localhost:3001/api/v1/users";
+          const URL = "http://localhost:3001/api/v1/users";
           fetch(URL, {
             method: "POST",
             headers: {

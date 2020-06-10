@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React from 'react';
 
 export default class Login extends React.Component{
     constructor(props){
@@ -15,7 +15,7 @@ export default class Login extends React.Component{
 
     handleSubmit = (e) => {
     e.preventDefault()
-    URL = "http://localhost:3001/api/v1/login";
+    const URL = "http://localhost:3001/api/v1/login";
       fetch(URL, {
         method: "POST",
         headers: {
