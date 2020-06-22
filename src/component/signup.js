@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import "../style/signup.scss"
 
 
 export default class signUp extends Component {
@@ -29,7 +30,7 @@ export default class signUp extends Component {
               user: {
                 username: this.state.username,
                 email: this.state.email,
-                password: this.state.password,
+                password: this.state.password
               },
             }),
           }).then(resp => resp.json())
@@ -51,7 +52,6 @@ export default class signUp extends Component {
     render() {
         return (
         <header className="Sign Up">
-        <body>
           {this.state.error && <p>Error in creating your account</p>}
           <div className="ui form">
             <form onSubmit={this.handleSubmit}>
@@ -85,7 +85,6 @@ export default class signUp extends Component {
               </div>
             </form>
           </div>
-        </body>
       </header>
     )}
 }

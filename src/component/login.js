@@ -48,7 +48,6 @@ export default class Login extends React.Component{
     render(){
         return(
         <header className="Login">
-        <body>
           {this.state.error && <p>Error in Login</p>}
           <div className="ui form">
             <form onSubmit={this.handleSubmit}>
@@ -74,7 +73,6 @@ export default class Login extends React.Component{
               </div>
             </form>
           </div>
-        </body>
       </header>
         )
     }

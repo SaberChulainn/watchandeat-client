@@ -1,23 +1,22 @@
 import React from 'react';
 
 export default class Profile extends React.Component{
-
     constructor(props){
         super(props)
         this.state = {
-            user: {}
+            movie_objs: {}
         }
     }
     componentDidMount(){
-        fetch("http://localhost:3001/api/v1/profile")
-        .then(resp => resp.json)
-        .then(data => this.setState({user: data}))
+        fetch(`http://localhost:3001/api/v1/movie_pairs/${this.props.user.id}`)
+        .then(resp => resp.json())
+        .then(data => console.log(data))
     }
 
     render(){
-        console.log(this.state.user)
+        console.log(this.props.user.id)
         return (
-            <p>fuck you</p>
+            <p>test</p>
         )
     }
 }

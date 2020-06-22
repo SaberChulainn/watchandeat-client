@@ -1,0 +1,94 @@
+
+.text-center{
+    width: 600px;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    height: 250px;
+    margin-bottom: 50px; /* Added */
+    border-radius: 10px;
+}
+.card-body{
+    background-color: rgba(45, 26, 50, 0.9);
+    border: none;
+    margin: 0;
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+.intro{
+font-family: SF Pro Display;
+font-style: normal;
+font-weight: 900;
+font-size: 25px;
+line-height: 48px;
+color: #FFFFFF;
+/* identical to box height */
+margin-left: 425px;
+}
+.homepage {
+    display: block;
+    max-width:200px;
+    max-height:200px;
+    width: auto;
+    height: auto;
+}
+
+.column-homepage {
+    float: left;
+    width: 15.33%;
+    padding: 5px;
+  }
+
+  .submit-btn{
+    display: block; 
+    margin: 0 auto;
+    background-color:#F66EE9;
+    font-family: SF Pro Medium;
+    font-style: normal;
+    color: #FFFFFF;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+  }
+
+  .card-title-home{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 20px;
+    /* identical to box height */
+    
+    align-items: center;
+    
+    color: #FFFFFF;
+  }
+
+  .random{
+      background-color: #F66EE9;
+      border-radius:36px;
+      margin-bottom: 75px; /* Added */
+
+  }
+
+  .header-food{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    margin-left: 90px;
+  }
+
+  .homepage-name{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+  }
+  .home-page{
+      padding-left: 100px;
+  }

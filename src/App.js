@@ -1,11 +1,13 @@
 import React from 'react';
 import NavbarPage from './component/navbar.js'
 import Signup from './component/signup.js'
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Randomize from './component/randomizer/randomgenerator.js'
 import Login from './component/login.js'
 import Results from './component/results.js'
 import Profile from './component/profile.js'
+import './style/background.css'
+
 
 
 export default class App extends React.Component{
@@ -14,8 +16,19 @@ export default class App extends React.Component{
     this.state = {
       user: {},
       movie: {},
-      food: {}
+      food: {},
+      movie_homepage: {}
     }
+  }
+  componentDidMount(){
+    fetch("http://localhost:3001/api/v1/re_auth", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
+      },
+    }).then(resp => resp.json())
+    .then(data => this.setState({user: data}))
   }
 
   setUser = (user) => {
@@ -26,18 +39,20 @@ export default class App extends React.Component{
     this.setState({movie: movie})
   }
 
+  setGenre = (genre) => {
+    this.setState({genre_id: genre})
+  }
+
   render(){
   return (
-      <BrowserRouter>
+      <body className="background">
         <NavbarPage/>
         <Route path="/signup" render={(props) => <Signup {...props} setUser={this.setUser}/>}/>
         <Route path="/login" render={(props) => <Login {...props} setUser={this.setUser}/>}/>
-        <Route path="/randomized" render={(props) => <Randomize {...props} setMovie={this.setMovie}/>}/>
-        <Route path="/results" render={(props) => <Results {...props} movie={this.state.movie}/>}/>
-        <Route path="/profile" render={(props) => <Profile {...props}/>}/>
-        <Route path="/"/>
-        </BrowserRouter>
-
+        <Route path="/randomized" render={(props) => <Randomize {...props} setMovie={this.setMovie} setGenre={this.setGenre} movie_homepage={this.state.movie_homepage}/>}/>
+        <Route path="/results" render={(props) => <Results {...props} movie={this.state.movie} user={this.state.user}/>}/>
+        <Route path="/profile" render={(props) => <Profile {...props} user={this.state.user}/>}/>
+        </body>
     );
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
-import NavDropdown from "react-bootstrap/NavDropDown";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -33,7 +32,7 @@ export default class NavbarPage extends Component {
       let isLoggedin = localStorage.getItem("token")
         return (
           <Navbar bg="dark" expand="lg">
-            <Link to="/" className="navbar-brand">
+            <Link to="/randomized" className="navbar-brand">
               MovieNight
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

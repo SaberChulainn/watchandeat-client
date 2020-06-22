@@ -1,0 +1,15 @@
+.background {
+    background: rgb(2,0,36);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(147,12,115,1) 100%);
+
+
+    
+}
+
+html, 
+body, 
+#background { 
+  width: 100vw;
+  min-height: 100vh;
+  background: #2D1A32;
+}
